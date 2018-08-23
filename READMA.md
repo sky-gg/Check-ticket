@@ -1,0 +1,19 @@
+# check-ticket
+> 12306 low b 查票法 国庆快到了，拿去用吧，不用谢。
+> 适用人群：一直在电脑前工作的人
+> 无票时使用
+
+## 使用方法
+1. 打开 https://kyfw.12306.cn/otn/leftTicket/init 正常查询你要的列车信息
+  ![hhh](img/a.png)
+2. 在浏览器中F12，打开调试工具，
+  ![hhh](img/b.png)
+3. 在控制台中输入或粘贴代码
+  ![hhh](img/c.png)
+4. 在你所需列车无票的席位上右键-检查，查找对应id
+  ![hhh](img/d.png)
+5. 复制对应id 
+  ![hhh](img/e.png)
+6. 替换代码中的原有id（重复4-6可查询多个席位）
+  ![hhh](img/f.png)
+7. 回车运行代码
