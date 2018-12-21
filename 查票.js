@@ -1,6 +1,6 @@
 function checkTicket(arr) {
   this.count = 0;//计数
-  let flag, num, ticketName;
+  let flag, num, ticketName,a;
   this.timer = setInterval(() => {
     this.count++;
     arr.map((item) => {
@@ -10,7 +10,7 @@ function checkTicket(arr) {
         num = item.slice(-12)
         ticketName = $(`#ticket_${num}`).find('a').html()
         console.log("共查询：" + this.count + "次！");
-        var a = $(`<a href='${ticketName}:有票，快买' target='_blank'>查询结果</a>`).get(0);
+        a = $(`<a href='${ticketName}:有票，快买' target='_blank'>查询结果</a>`).get(0);
         a.click()
       }
     })
