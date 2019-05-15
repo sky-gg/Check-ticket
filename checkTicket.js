@@ -4,8 +4,9 @@ if (!('Notification' in window)) {
 } else {
     Notification.requestPermission().then(function (permission) {
         if (permission === 'granted') {
-            // '用户允许通知' 继续执行
-            checkTicket(['SWZ_6i0000G84000', 'SWZ_6i0000G8260B'])
+            // '用户允许通知', 开始查票
+            
+            //checkTicket(['SWZ_6i0000G84000', 'SWZ_6i0000G8260B'])
         } else if (permission === 'denied') {
             // '用户拒绝通知' 罢工
             alert('抱歉，您拒绝使用桌面通知，将终止查票');
