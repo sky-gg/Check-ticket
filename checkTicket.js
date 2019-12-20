@@ -33,6 +33,8 @@ function checkTicket(arr) {
                 let num = item.slice(-12)
                 //获取车次名称
                 let ticketName = $(`#ticket_${num}`).find('a').html()
+                //调用12306声音提示
+                $('#tryPlayer').click()
                 // 调用api，进行电脑端提醒
                 new Notification(`已查询${this.count}次`, {
                     dir: 'auto',
