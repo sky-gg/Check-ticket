@@ -33,10 +33,12 @@ function checkTicket(arr) {
                 let num = item.slice(-12)
                 //获取车次名称
                 let ticketName = $(`#ticket_${num}`).find('a').html()
+                //车次高亮
+                $(`#ticket_${num}`).css({backgroundColor:'red'})
                 //调用12306声音提示
                 $('#tryPlayer').click()
                 // 调用api，进行电脑端提醒
-                new Notification(`已查询${this.count}次`, {
+                new Notification(`共查询${this.count}次`, {
                     dir: 'auto',
                     body: `${ticketName}:车次有票，快买。`,
                     icon: 'https://www.12306.cn/index/images/favicon.ico',
