@@ -1,11 +1,10 @@
 // 调用桌面通知
 if (!('Notification' in window)) {
-    alert('抱歉，您的浏览器不支持桌面通知，将终止查票');
+    alert('抱歉，您的浏览器不支持桌面通知，请使用Chrome浏览器');
 } else {
     Notification.requestPermission().then(function (permission) {
         if (permission === 'granted') {
-            // '用户允许通知', 开始查票
-            
+            // '用户允许通知'，执行查票代码，开始查票
             //checkTicket(['SWZ_6i0000G84000', 'SWZ_6i0000G8260B'])
         } else if (permission === 'denied') {
             // '用户拒绝通知' 罢工
@@ -14,7 +13,7 @@ if (!('Notification' in window)) {
     });
 }
 /*
-* param {arr} Array
+* param {arr} Array 席位ID
 */
 function checkTicket(arr) {
     //用于计数
