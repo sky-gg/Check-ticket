@@ -50,16 +50,32 @@ function checkTicket(arr) {
     }, 3000)
 }
 
-/* 订单页脚本
+/* 订单页油猴脚本
 
-    //选取乘车人 默认第一位
-    $('#normalPassenger_0').click()
+// ==UserScript==
+// @name         12306抢票
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://kyfw.12306.cn/otn/confirmPassenger/initDc
+// @grant        none
+// ==/UserScript==
 
-    //确认订单信息
-    $('#submitOrder_id').click()
+(function() {
+    'use strict';
+
     setTimeout(function(){
-        //提交订单
-        $('#qr_submit_id').click()
+        //选取乘车人 默认第一位
+        $('#normalPassenger_0').click()
+
+        //确认订单信息
+        $('#submitOrder_id').click()
+        setTimeout(function(){
+            //提交订单
+            $('#qr_submit_id').click()
+        },1000)
     },1000)
+})();
 
 */
