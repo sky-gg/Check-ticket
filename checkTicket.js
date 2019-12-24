@@ -5,7 +5,7 @@ if (!('Notification' in window)) {
     Notification.requestPermission().then(function (permission) {
         if (permission === 'granted') {
             // '用户允许通知'，执行查票代码，开始查票
-            //checkTicket(['SWZ_6i0000G84000', 'SWZ_6i0000G8260B'])
+            checkTicket(['ZE_6i0000D9020M', 'SWZ_6i0000G8260B'])
         } else if (permission === 'denied') {
             // '用户拒绝通知' 罢工
             alert('抱歉，您拒绝使用桌面通知，将终止查票');
@@ -16,11 +16,8 @@ if (!('Notification' in window)) {
 * param {arr} Array 席位ID
 */
 function checkTicket(arr) {
-    //用于计数
-    this.count = 0;
     //设置定时器3秒查询一次
     this.timer = setInterval(() => {
-        this.count++;
         //遍历传入数组
         arr.map((item) => {
             //是否有class属性
@@ -31,22 +28,38 @@ function checkTicket(arr) {
                 clearInterval(this.timer);
                 //获取id后缀数字，用于查询有票的那个车次
                 let num = item.slice(-12)
-                //获取车次名称
-                let ticketName = $(`#ticket_${num}`).find('a').html()
-                //车次高亮
-                $(`#ticket_${num}`).css({backgroundColor:'red'})
-                //调用12306声音提示
-                $('#tryPlayer').click()
+                
                 // 调用api，进行电脑端提醒
-                new Notification(`共查询${this.count}次`, {
+                new Notification('温馨提示：', {
                     dir: 'auto',
-                    body: `${ticketName}:车次有票，快买。`,
+                    body: '已进入支付流程，请支付',
                     icon: 'https://www.12306.cn/index/images/favicon.ico',
                     requireInteraction: true
                 })
+                
+                //调用12306声音提示
+                $('#tryPlayer').click()
+                
+                //进入确认订单页
+                $(`#ticket_${num} td:last a:first`).click();
+
             }
         })
         //代替人手，进行查票操作
         $("#query_ticket").click();
     }, 3000)
 }
+
+/* 订单页脚本
+
+    //选取乘车人 默认第一位
+    $('#normalPassenger_0').click()
+
+    //确认订单信息
+    $('#submitOrder_id').click()
+    setTimeout(function(){
+        //提交订单
+        $('#qr_submit_id').click()
+    },1000)
+
+*/
